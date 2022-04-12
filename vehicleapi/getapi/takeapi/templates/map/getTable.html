@@ -1,0 +1,26 @@
+
+{% block content %}
+<table class="content-table" style="z-index: 3;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Bien So</th>
+                <th>Vi tri</th>
+                <th>Toc do</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for driver in data %}
+            <tr>
+                <td>{{ driver.ID }}</td>
+                <td>{{ driver.Bienso }}</td>
+                <td>{{ driver.ViTri }}</td>
+                <td>{{ driver.TocDo }}</td>
+            </tr>
+        {% endfor %}
+        
+        </tbody>
+
+</table>
+
+{% endblock content %}
