@@ -1,34 +1,11 @@
 /* Map */
 
-var biensoxe = [driver1[1], driver2[1], driver3[1], driver4[1], driver5[1], driver6[1], driver7[1],
-driver8[1], driver9[1], driver10[1], driver11[1], driver12[1], driver13[1], driver14[1], driver15[1],
-driver16[1], driver17[1], driver18[1], driver19[1], driver20[1], driver21[1], driver22[1], driver23[1]];
-var i;
-var b;
+let biensoxe = json.map(a => a.Bienso);
 console.log(biensoxe)
-let sum = 0;
-
-
-
-
-var tocdo = [driver1[12], driver2[12], driver3[12], driver4[12], driver5[12], driver6[12],driver7[12],
-driver8[12], driver9[12], driver10[12], driver11[12], driver12[12], driver13[12], driver14[12], driver15[12],
-driver16[12], driver17[12], driver18[12], driver19[12], driver20[12], driver21[12], driver22[12], driver23[12]];
-if(tocdo.length>0){
-    for(i=0;i<tocdo.length;i++){
-        
-    }
-}
-
-
-
-var direction = [driver1[11], driver2[11], driver3[11], driver4[11], driver5[11], driver6[11],
-driver7[11], driver8[11], driver9[11], driver10[11], driver11[11], driver12[11], driver13[11],
-driver14[11], driver15[11], driver16[11], driver17[11], driver18[11], driver19[11], driver20[11],
-driver21[11], driver22[11], driver23[11] ];
-console.log(direction)
-
-
+let tocdo = json.map(b => b.TocDo);
+console.log(tocdo)
+let huong = json.map(c => c.Huong);
+console.log(huong)
 
 var latlng = [[driver1[8], driver1[9]], [driver2[8], driver2[9]], [driver3[8], driver3[9]],
 [driver4[8], driver4[9]], [driver5[8], driver5[9]], [driver6[8], driver6[9]], [driver7[8], driver7[9]],
@@ -66,16 +43,13 @@ function updateLatLng(){
     addMarkers();
 }  */
 function addMarkers(){
-    for(i=0;i<direction.length;i++){
-        const quotient=Math.floor(direction[i] / 10);
-        console.log(quotient)
-        
-        var path = '../static/images/cars/3/Car'+ quotient +'.png';
+    for(i=0;i<huong.length;i++){
+        const quotient=Math.floor(huong[i] / 10);
+        const Angle = quotient * 10;
+        var path = '../static/images/cars/3/Car'+ Angle +'.png';
     }
 
     /*var Angle = quotient * 10;*/
-    
-    
     var icon = new H.map.Icon(path);
     var markers = [];
     var html = document.createElement('div'),
@@ -84,7 +58,7 @@ function addMarkers(){
         imgIco = document.createElement('img');
     imgIco.setAttribute('src', path);
     divIcon.appendChild(imgIco);
-    biensoxe.forEach(element => divText.innerHTML='<b>'+element+'</b>');
+    divText.innerHTML='<b>'+biensoxe+'</b>';
     
     html.appendChild(divIcon);
     html.appendChild(divText);
