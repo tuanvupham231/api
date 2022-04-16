@@ -11,7 +11,7 @@ from requests.auth import HTTPBasicAuth
 # Create your views here.
 
 def index(request):
-    response = requests.get("http://api.maax.vn/api/MaaxApi/GetVehicles",auth=HTTPBasicAuth('vandu','ongvu55'))
+    response = requests.get("http://api.maax.vn/api/MaaxApi/GetVehicles",auth=HTTPBasicAuth('lengoc','lengoc01'))
     geodata = response.json()
     drivers = []
     for driver in geodata["vehicleList"]:  
