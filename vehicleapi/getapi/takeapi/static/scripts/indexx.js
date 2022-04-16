@@ -2,6 +2,8 @@
 let biensoxe = json.map(a => a.Bienso);
 let tocdo = json.map(b => b.TocDo);
 let huong = json.map(c => c.Huong);
+let _lat = json.map(d => d.LAT);
+let _lng = json.map(e => e.LONG);
 
 
 var latlng = [[driver1[8], driver1[9]], [driver2[8], driver2[9]], [driver3[8], driver3[9]],
@@ -40,37 +42,36 @@ function updateLatLng(){
     addNewMarkers();
 }  */
 function addMarkers(){
-    for(i=0;i<huong.length;i++){
-        const quotient=Math.floor(huong[i] / 10);
-        const Angle = quotient * 10;
-        var path = '../static/images/cars/3/Car'+ Angle +'.png';
-    }
-    var icon = new H.map.Icon(path);
-    let markers = [];
-    let html = document.createElement('div'),
+        for(i=0;i<huong.length;i++){
+            const quotient = Math.floor(huong[i] / 10);
+            const Angle = quotient * 10;
+            var path = '../static/images/cars/3/Car'+ Angle +'.png';
+            console.log(Angle)
+        }
+        var icon = new H.map.Icon(path);
+        let markers = [];
+        let html = document.createElement('div'),
         divIcon = document.createElement('div'),
         divText = document.createElement('div'),
         imgIco = document.createElement('img');
-    imgIco.setAttribute('src', path);
-    divIcon.appendChild(imgIco);
-    biensoxe.forEach(element => divText.innerHTML = '<b>'+element+'</b>');
-    
-    html.appendChild(divIcon);
-    html.appendChild(divText);
-    domIcon = new H.map.DomIcon(html);
-    latlng.forEach(function(pos){
-        let markerss = new H.map.DomMarker({lat: pos[0], lng: pos[1]},{
-            icon: domIcon
+        imgIco.setAttribute('src', path);
+        divIcon.appendChild(imgIco);
+        biensoxe.forEach(element => divText.innerHTML = '<b>'+element+'</b>');
+        html.appendChild(divIcon);
+        html.appendChild(divText);
+        domIcon = new H.map.DomIcon(html);
+        latlng.forEach(function(pos){
+            let markerss = new H.map.DomMarker({lat: pos[0], lng: pos[1]},{
+                icon: domIcon,
         });
         markers.push(markerss);
+        console.log(markerss);
+        
     });
-    group.addObjects(markers);
-    window.addEventListener('resize', function(){
-        map.getViewPort().resize();
-    });
-}
+        group.addObjects(markers);
+};
+
 
 function addNewMarkers(){
-    let lat = [document.getElementById("getlat").getAttribute("value")];
-    console.log(lat)
+
 }
