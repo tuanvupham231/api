@@ -1,11 +1,8 @@
 /* Map */
-
 let biensoxe = json.map(a => a.Bienso);
-console.log(biensoxe)
 let tocdo = json.map(b => b.TocDo);
-console.log(tocdo)
 let huong = json.map(c => c.Huong);
-console.log(huong)
+
 
 var latlng = [[driver1[8], driver1[9]], [driver2[8], driver2[9]], [driver3[8], driver3[9]],
 [driver4[8], driver4[9]], [driver5[8], driver5[9]], [driver6[8], driver6[9]], [driver7[8], driver7[9]],
@@ -40,7 +37,7 @@ addMarkers();
     
 function updateLatLng(){
     group.removeAll();
-    addMarkers();
+    addNewMarkers();
 }  */
 function addMarkers(){
     for(i=0;i<huong.length;i++){
@@ -48,30 +45,32 @@ function addMarkers(){
         const Angle = quotient * 10;
         var path = '../static/images/cars/3/Car'+ Angle +'.png';
     }
-
-    /*var Angle = quotient * 10;*/
     var icon = new H.map.Icon(path);
-    var markers = [];
-    var html = document.createElement('div'),
+    let markers = [];
+    let html = document.createElement('div'),
         divIcon = document.createElement('div'),
         divText = document.createElement('div'),
         imgIco = document.createElement('img');
     imgIco.setAttribute('src', path);
     divIcon.appendChild(imgIco);
-    divText.innerHTML='<b>'+biensoxe+'</b>';
+    biensoxe.forEach(element => divText.innerHTML = '<b>'+element+'</b>');
     
     html.appendChild(divIcon);
     html.appendChild(divText);
     domIcon = new H.map.DomIcon(html);
     latlng.forEach(function(pos){
-        var markerss = new H.map.DomMarker({lat: pos[0], lng: pos[1]},{
+        let markerss = new H.map.DomMarker({lat: pos[0], lng: pos[1]},{
             icon: domIcon
         });
         markers.push(markerss);
     });
     group.addObjects(markers);
-
     window.addEventListener('resize', function(){
         map.getViewPort().resize();
     });
+}
+
+function addNewMarkers(){
+    let lat = [document.getElementById("getlat").getAttribute("value")];
+    console.log(lat)
 }

@@ -11,6 +11,9 @@
                     <p class="sam1" style="padding-left: 15px">{{ driver.ThoiGianDung }}</p>
                     <p class="sam1" style="padding-left: 25px">Lai xe:{{ driver.Tenlaixe }}</p>
                 </div>
+                    <input id="getlat" value="{{ driver.LAT }}" style="display: none" type="text">
+                    <input id="getlng" value="{{ driver.LONG }}" style="display: none" type="text">
+                    <input id="getdirection" value="{{ driver.Huong }}" style="display:none" type="text">
                 {% endfor %}
 
 {% endblock content %}
