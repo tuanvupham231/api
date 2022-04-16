@@ -207,3 +207,25 @@ body{
     text-align: center;
 }
 
+@media screen and (max-width:1024px){
+    .navbar input{
+        width: 25%;
+    }
+    .navbar #search{
+        margin-left: -220px;
+        float: left;
+    }
+    .navbar #bell{
+        margin-left: -320px;
+        float: left;
+    }
+    .navbar #user{
+        margin-left: -340px;
+        float: left;
+    }
+    .navbar p{
+        margin-left: -375px;
+        float: left;
+    }
+}
+
