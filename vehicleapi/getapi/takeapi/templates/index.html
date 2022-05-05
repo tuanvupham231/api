@@ -74,6 +74,19 @@
                     <p class="sam1" style="padding-left: 15px">{{ driver.ThoiGianDung }}</p>
                     <p class="sam1" style="padding-left: 25px">Lai xe:{{ driver.Tenlaixe }}</p>
                 </div>
+                <div class="direc" style="display: none">
+                    {{ driver.Huong }}
+                </div>
+                <div class="lat" style="display: none">
+                    {{ driver.LAT }}
+                </div>
+                <div class="lng" id="long" style="display: none">
+                    {{ driver.LONG }}
+                </div>
+                <div class="speed" style="display: none">
+                    {{ driver.TocDo }}
+                </div>
+                
                 {% endfor %}
             </div>
         </div>
@@ -82,46 +95,23 @@
             <span id="smart" style="margin-left: 450px; color: green;">Smart School Management System</span>
         </div>
         <script>
-            var n;
-            const json = JSON.parse('{{ data|escapejs }}'.replace(/'/g, '"'))
-            let driver1 = Object.values(json[0]);
-            let driver2 = Object.values(json[1]);
-            let driver3 = Object.values(json[2]);
-            let driver4 = Object.values(json[3]);
-            let driver5 = Object.values(json[4]);
-            let driver6 = Object.values(json[5]);
-            let driver7 = Object.values(json[6]);
-            let driver8 = Object.values(json[7]);
-            let driver9 = Object.values(json[8]);
-            let driver10 = Object.values(json[9]);
-            let driver11 = Object.values(json[10]);
-            let driver12 = Object.values(json[11]);
-            let driver13 = Object.values(json[12]);
-            let driver14 = Object.values(json[13]);
-            let driver15 = Object.values(json[14]);
-            let driver16 = Object.values(json[15]);
-            let driver17 = Object.values(json[16]);
-            let driver18 = Object.values(json[17]);
-            let driver19 = Object.values(json[18]);
-            let driver20 = Object.values(json[19]);
-            let driver21 = Object.values(json[20]);
-            let driver22 = Object.values(json[21]);
-            let driver23 = Object.values(json[22]);
+            const json = JSON.parse('{{ data|escapejs }}'.replace(/'/g, '"'));
         </script>
         </div>
         <div id="map" style="width: 100%; height: 100vh; z-index: 0; position: fixed; left: 0; top: 0;">
         </div>
-        <script type="text/javascript" src="../static/scripts/indexx.js">
+        {% load static %}
+        <script type="text/javascript" src="{% static 'scripts/indexx.js' %}">
         </script>
         
+
         <script>   
             function doRefresh(){
                 $('#getvehicle').load("{%  url 'getTable' %}");
             }
             $(function(){
-                setInterval(doRefresh, 15000);
-            });
-
+                setInterval(doRefresh, 10000);
+            });    
         </script>
     </body>
 </html>

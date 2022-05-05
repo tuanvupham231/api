@@ -11,9 +11,18 @@
                     <p class="sam1" style="padding-left: 15px">{{ driver.ThoiGianDung }}</p>
                     <p class="sam1" style="padding-left: 25px">Lai xe:{{ driver.Tenlaixe }}</p>
                 </div>
-                    <input id="getlat" value="{{ driver.LAT }}" style="display: none" type="text">
-                    <input id="getlng" value="{{ driver.LONG }}" style="display: none" type="text">
-                    <input id="getdirection" value="{{ driver.Huong }}" style="display:none" type="text">
+                <div class="direc" style="display: none">
+                    {{ driver.Huong }}
+                </div>
+                <div class="lat" style="display: none">
+                    {{ driver.LAT }}
+                </div>
+                <div class="lng" style="display: none">
+                    {{ driver.LONG }}
+                </div>
+                <div class="speed" style="display: none">
+                    {{ driver.TocDo }}
+                </div>
                 {% endfor %}
 
 {% endblock content %}

@@ -1,9 +1,10 @@
+
 /* Map */
 let biensoxe = json.map(a => a.Bienso);
-let tocdo = json.map(b => b.TocDo);
-let huong = json.map(c => c.Huong);
-let _lat = json.map(d => d.LAT);
-let _lng = json.map(e => e.LONG);
+var long = document.querySelectorAll(".lng");
+var lat = document.querySelectorAll(".lat");
+var directions = document.querySelectorAll(".direc");
+var speeds = document.querySelectorAll(".speed");
 
 var platform = new H.service.Platform({
     apikey: '0LG9EzrI2_m1aZFqlcv537oM7Vlp-mesrhRmCh6WaJY'
@@ -24,31 +25,29 @@ var ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
 group = new H.map.Group();
 map.addObject(group)
 addMarkers();
-/* setInterval(function(){
-    updateLatLng();
-    updateMarkers();
-}, 5000)
-    
-function updateLatLng(){
+setInterval(updateMarkers, 8000);
+function updateMarkers(){
     group.removeAll();
-}  */
+    addMarkers();
+}
+
 function addMarkers(){
     for(var i=0;i<biensoxe.length;i++){
-        var latitude = _lat[i];
-        var longtitude = _lng[i];
-        console.log(latitude, longtitude)
-        var direction = huong[i];
-        var speed = tocdo[i];
-        if(speed>0){
+        var longtitude = document.querySelectorAll(".lng");
+        var latitude = document.querySelectorAll(".lat");
+        var direction = document.querySelectorAll(".direc");
+        var speed = document.querySelectorAll(".speed");
+        console.log(speed[i].innerHTML)
+        if(speed[i].innerHTML > 0){
             var Color = '4'
         }
-        if(speed == 0){
+        if(speed[i].innerHTML == 0){
             Color = '3'
         }
-        if(speed>90){
+        if(speed[i].innerHTML > 80){
             Color = '6'
         }
-        var quotient = Math.floor(direction/10);
+        var quotient = Math.floor(direction[i].innerHTML/10);
         var Angle = quotient * 10;
         var path = '../static/images/cars/' + Color + '/Car' + Angle + '.png';
         let html = document.createElement('div'),
@@ -61,13 +60,12 @@ function addMarkers(){
     html.appendChild(divIcon);
     html.appendChild(divText);
     var domIcon = new H.map.DomIcon(html);
-        var markers = new H.map.DomMarker({lat: latitude, lng: longtitude},{
+        var markers = new H.map.DomMarker({lat: latitude[i].innerHTML, lng: longtitude[i].innerHTML},{
             icon: domIcon
         })
     group.addObject(markers);
     }
 };
-
 
 
 
